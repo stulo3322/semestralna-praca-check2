@@ -19,7 +19,7 @@ class databaza
         }
     }
 
-    public function kontrolaPrihlasenie($login,$heslo) {
+    public function kontrolaPrihlasenie($login,$heslo) : bool {
         $dbRiadky = $this->db->query('select * from prudaje');
         foreach ($dbRiadky as $riadok) {
             if ($riadok['login'] == $login && $riadok['heslo'] == $heslo) {
@@ -80,18 +80,27 @@ class databaza
         return 1;
     }
 
-    public function vymazanieUctu($login,$heslo,$hesloZnova) : bool {
-        if ($heslo == $hesloZnova) {
-            try {
-                $sql = "DELETE FROM prudaje WHERE login=?";
-                $this->db->prepare($sql)->execute([$login]);
-                return true;
-            } catch (PDOException $e) {
-                echo 'Failed: ' . $e->getMessage();
-                return false;
+    public function vymazanieUctu($login,$heslo,$hesloZnova) : int {
+        $hesloDb = $this->db->prepare('SELECT heslo FROM prudaje WHERE login=?');
+        $hesloDb->execute([$login]);
+        if( $hesloV = $hesloDb->fetch()) {
+            if($hesloV['heslo'] == $heslo) {
+                if ($heslo == $hesloZnova) {
+                    try {
+                        $sql = "DELETE FROM prudaje WHERE login=?";
+                        $this->db->prepare($sql)->execute([$login]);
+                        return 0;
+                    } catch (PDOException $e) {
+                        echo 'Failed: ' . $e->getMessage();
+                        return 3;
+                    }
+                } else {
+                    return 2;
+                }
             }
+            return 1;
         } else {
-            return false;
+            return 1;
         }
     }
 }

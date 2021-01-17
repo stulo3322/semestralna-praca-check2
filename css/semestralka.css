@@ -2,13 +2,9 @@
     margin: 0;
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
-    margin: 0;
     background-color: #f4f4f4;
-
-
     width: 100vw;
     height: 100vh;
-
 }
 
 .container {
@@ -17,6 +13,9 @@
   overflow: hidden;
 }
 
+.hlavne {
+  margin-top: 20px;
+}
 
 ul {
   margin: 0;
@@ -107,6 +106,7 @@ header a:hover {
 }
 
 #novinky {
+  margin-top: 20px;
   padding: 15px;
   color: white;
   background: #35424a;
@@ -130,7 +130,6 @@ header a:hover {
 
 #kategorie {
   margin-top: 20px;
-
 }
 
 #kategorie .kategoria {
@@ -138,7 +137,7 @@ header a:hover {
   text-align: center;
   width: 30%;
   padding: 10px;
-  display: inline;
+  display: block;
 }
 
 #kategorie .kategoria img {

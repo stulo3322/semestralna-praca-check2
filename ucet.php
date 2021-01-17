@@ -68,21 +68,25 @@ if(isset($_POST['odoslane'])) {
                 </article>
                 <form method="post">
                     <div class="container">
-                    <h1>Registracia</h1>
-                    <p>Prosim vyplnte nasledovne udaje pre vytvorenie uctu</p>
-                    <hr>
-                
-                    <label for="email"><b>E-mail</b></label>
-                    <input type="email" placeholder="Enter Email" name="email" id="email" required>
-
-                        <label for="email"><b>Login</b></label>
-                        <input type="text" placeholder="Enter Login" name="login" id="login" required>
-                
-                    <label for="psw"><b>Heslo</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-                
-                    <label for="psw-repeat"><b>Zopakujte heslo</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                        <h1>Registracia</h1>
+                        <p>Prosim vyplnte nasledovne udaje pre vytvorenie uctu</p>
+                        <hr>
+                        <div class="kategoria">
+                            <label for="email"><b>E-mail</b></label>
+                            <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                        </div>
+                        <div class="kategoria">
+                            <label for="email"><b>Login</b></label>
+                            <input type="text" placeholder="Enter Login" name="login" id="login" required>
+                        </div>
+                        <div class="kategoria">
+                            <label for="psw"><b>Heslo</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                        </div>
+                        <div class="kategoria">
+                            <label for="psw-repeat"><b>Zopakujte heslo</b></label>
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                        </div>
                     <hr>
                 
                     <p>Vytvorenim uctu suhlasite s nasimi <a href="#">Komunitnymi podmienkami MemeHell</a>.</p>

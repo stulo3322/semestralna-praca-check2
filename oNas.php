@@ -50,10 +50,10 @@ session_start();
         <section id="novinky">
             <div class="container">
                 <h1>Prihlaste sa na odber noviniek</h1>
-                <form action="action.php">
+               <form action="action.php">
                     <input type="email" placeholder="Zadajte email..."> 
-                    <button type="submit" class="tlacidlo">Prihlasit</button>
-                </form>
+                    <button type="submit" class="tlacidlo" disabled>Prihlasit</button>
+               </form>
             </div>
         </section>
         <footer>

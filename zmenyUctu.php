@@ -19,13 +19,17 @@ if(isset($_POST['zmena'])) {
 
 if(isset($_POST['vymazanie'])) {
     $tmp = $db->vymazanieUctu($_SESSION['login'],$_POST['psw'],$_POST['psw-repeat']);
-    if($tmp) {
+    if($tmp == 0) {
         $_SESSION['loggedin'] = false;
         $_SESSION['login'] = "";
         echo '<script>alert("Heslo uspesne zmenene!")</script>';
         header("Location: index.php");
-    } else {
+    } elseif($tmp == 1) {
+        echo '<script>alert("Zadali ste nespravne heslo!")</script>';
+    } elseif($tmp == 2) {
         echo '<script>alert("Hesla sa nezhoduju!")</script>';
+    } elseif($tmp == 3) {
+        echo '<script>alert("Databaza!")</script>';
     }
 }
 ?>
@@ -68,7 +72,7 @@ if(isset($_POST['vymazanie'])) {
 </header>
 
 
-<section id="hlavne">
+<section class="hlavne">
     <div class="container">
         <article id="hlavne-stlpec">
             <h1 class = "nadpis-stranka">Zmeny uctu pouzivatela: <?php echo $_SESSION['login']?></h1>
@@ -77,38 +81,41 @@ if(isset($_POST['vymazanie'])) {
         <form method="post">
             <div class="container">
                 <h1>Zmena hesla</h1>
-                <hr>
-                <label for="psw"><b>Stare heslo</b></label>
-                <input type="password" placeholder="Zadajte heslo" name="sPsw" id="psw" required>
-
-                <label for="psw"><b>Nove Heslo</b></label>
-                <input type="password" placeholder="Zadajte heslo" name="nPsw" id="psw" required>
-
-                <label for="psw-repeat"><b>Zopakujte heslo</b></label>
-                <input type="password" placeholder="Zopakujte heslo" name="nPsw-repeat" id="psw-repeat" required>
-                <hr>
+                <br>
+                <div class="kategoria">
+                    <label for="psw"><b>Stare heslo</b></label>
+                    <input type="password" placeholder="Zadajte heslo" name="sPsw" id="psw" required>
+                </div>
+                <br>
+                <div class="kategoria">
+                    <label for="psw"><b>Nove Heslo</b></label>
+                    <input type="password" placeholder="Zadajte heslo" name="nPsw" id="psw" required>
+                </div>
+                <div class="kategoria">
+                    <label for="psw-repeat"><b>Zopakujte heslo</b></label>
+                    <input type="password" placeholder="Zopakujte heslo" name="nPsw-repeat" id="psw-repeat" required>
+                </div>
+                <br>
                 <button type="submit" name="zmena" class="registerbtn">Zmenit heslo</button>
             </div>
         </form>
+        <hr>
         <form  method="post">
             <div class="container">
                 <h1>Vymazanie uctu</h1>
-                <hr>
-
-                <label for="psw"><b>Heslo</b></label>
-                <input type="password" placeholder="Zadajte heslo" name="psw" id="psw" required>
-
-                <label for="psw-repeat"><b>Zopakujte heslo</b></label>
-                <input type="password" placeholder="Zopakujte heslo" name="psw-repeat" id="psw-repeat" required>
-                <hr>
+                <br>
+                <div class="kategoria">
+                    <label for="psw"><b>Heslo</b></label>
+                    <input type="password" placeholder="Zadajte heslo" name="psw" id="psw" required>
+                </div>
+                <div class="kategoria">
+                    <label for="psw-repeat"><b>Zopakujte heslo</b></label>
+                    <input type="password" placeholder="Zopakujte heslo" name="psw-repeat" id="psw-repeat" required>
+                </div>
+                <br>
                 <button type="submit" name="vymazanie" class="registerbtn">Odstranit ucet</button>
             </div>
-
-            <div class="container signin">
-                <p>Uz mate ucet? <a href="prihlasenie.php">Prihlaste sa</a>.</p>
-            </div>
         </form>
-    </div>
     </div>
 </section>
 

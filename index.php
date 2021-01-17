@@ -17,7 +17,7 @@ if($_SESSION['loggedin'] != true) {
         <meta name="author" content="Martin Stulrajter">
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <base href="/semestralka/">
+        <base href="/semestralna-praca-check2/">
         <title>MemeHell | Vitajte</title>
         <link rel="stylesheet" href="css/semestralka.css">
     </head>
@@ -57,12 +57,12 @@ if($_SESSION['loggedin'] != true) {
                 <div class="kategoria">
                     <img src="./obrazky/fire-8159-128x128.ico" alt="fire">
                     <h3>HOT</h3>
-                    <p>Najhorucejsie obrazky za posledny tyzden</p>
+                    <p>Najlepsie obrazky za tento tyzden</p>
                 </div>
                 <div class="kategoria">
                     <img src="./obrazky/arrow-9201-128x128.ico" alt="arrow">
                     <h3>TRENDING</h3>
-                    <p>Najhorucejsie dnesne obrazky</p>
+                    <p>Najlepsie dnesne obrazky</p>
                 </div>
                 <div class="kategoria">
                     <img src="./obrazky/baby-14213-128x128.ico" alt="baby">
@@ -83,9 +83,5 @@ if($_SESSION['loggedin'] != true) {
         <footer>
             <p>Martin Stulrajter, Copyright &copy; 2020</p>
         </footer>
-
-    <?php
-
-    ?>
     </body>
 </html>
