@@ -44,7 +44,17 @@ if($_SESSION['loggedin'] != true) {
                     </ul>
                 </nav>
             </div>
+
         </header>
+        <div class="nav2">
+            <nav>
+                <ul>
+                    <li class="aktualny"><a href="">Domov</a></li>
+                    <li><a href="oNas.php">O nas</a></li>
+                    <li><a href="ucet.php">Ucet</a></li>
+                </ul>
+            </nav>
+        </div>
 
         <section id="ukazka">
             <div class="container">

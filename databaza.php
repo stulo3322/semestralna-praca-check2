@@ -9,6 +9,7 @@ class databaza
     private const DB_PASS = 'dtb456';
 
     private $db;
+    private $hash;
 
     public function __construct()
     {
@@ -22,7 +23,7 @@ class databaza
     public function kontrolaPrihlasenie($login,$heslo) : bool {
         $dbRiadky = $this->db->query('select * from prudaje');
         foreach ($dbRiadky as $riadok) {
-            if ($riadok['login'] == $login && $riadok['heslo'] == $heslo) {
+            if ($riadok['login'] == $login && password_verify($heslo,$riadok['heslo'])) {
                 return true;
             }
         }
@@ -50,22 +51,26 @@ class databaza
     }
 
     public function ulozUdajeDb($email,$login,$heslo) {
+        $hashslo = password_hash($heslo,PASSWORD_BCRYPT);
         try {
             $sql = 'INSERT INTO prudaje(email,login,heslo) VALUES (?,?,?)';
-            $this->db->prepare($sql)->execute([$email,$login,$heslo]);
+            $this->db->prepare($sql)->execute([$email,$login,$hashslo]);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
-    public function zmenaHesla($login,$stareHeslo,$noveHeslo, $noveHesloZnova) : int {
+    public function zmenaHesla($login,$stareHeslo,$noveHeslo, $noveHesloZnova) : int
+    {
         $dbRiadky = $this->db->query('select * from prudaje');
         foreach ($dbRiadky as $riadok) {
-            if ($riadok['login'] == $login && $riadok['heslo'] == $stareHeslo) {
+            if ($riadok['login'] == $login && password_verify($stareHeslo, $riadok['heslo'])) {
                 if ($noveHeslo == $noveHesloZnova) {
                     try {
-                        $sql = "UPDATE prudaje SET heslo=? WHERE login=? AND heslo=?";
-                        $this->db->prepare($sql)->execute([$noveHeslo, $login, $stareHeslo]);
+                        $noveHashslo = password_hash($noveHeslo, PASSWORD_BCRYPT);
+
+                        $sql = "UPDATE prudaje SET heslo=? WHERE login=?";
+                        $this->db->prepare($sql)->execute([$noveHashslo, $login]);
                         return 0;
 
                     } catch (PDOException $e) {
@@ -76,9 +81,10 @@ class databaza
                     return 2;
                 }
             }
+            return 1;
         }
-        return 1;
     }
+
 
     public function vymazanieUctu($login,$heslo,$hesloZnova) : int {
         $hesloDb = $this->db->prepare('SELECT heslo FROM prudaje WHERE login=?');

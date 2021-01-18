@@ -4,8 +4,6 @@ include_once 'databaza.php';
 class prihlasovanie
 {
     private $db;
-    private $login;
-    private $heslo;
 
     public function __construct()
     {
