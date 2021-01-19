@@ -56,7 +56,7 @@ echo file_get_contents("adminHeader.php")
     </div>
 </div>
 <div class="sipka-hore my-4 mx-4">
-    <img src="obrazky/sipka.png" width="30px" height="40px" onclick="topFunction()">
+    <img src="obrazky/sipka.png" width="30" height="40" alt="..." onclick="topFunction()">
 </div>
 <script>
     function topFunction() {

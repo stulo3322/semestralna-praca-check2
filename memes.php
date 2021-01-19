@@ -53,7 +53,7 @@ echo file_get_contents("adminHeader.php")
             </div>
     </div>
     <div class="d-flex justify-content-center">
-        <a href="memes.php" type="submit" class="btn btn-success my-5" >Dalsie meme</a>
+        <a href="memes.php" class="btn btn-success my-5" >Dalsie meme</a>
     </div>
 
 
@@ -69,7 +69,7 @@ echo file_get_contents("adminHeader.php")
         </div>
     </section>
     <footer>
-        <p>Martin Stulrajter, Copyright &copy; 2021</p>
+        <p>Martin Stulrajter, Copyright &#169; 2021</p>
     </footer>
     </body>
 </html>

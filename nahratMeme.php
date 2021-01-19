@@ -6,8 +6,6 @@ session_start();
 if(isset($_POST['odoslat'])) {
     $db->vlozMeme($_SESSION['login'],$_POST['nadpis'],$_POST['popis'],$_POST['url']);
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,15 +56,15 @@ echo file_get_contents("adminHeader.php")
     <form method="post">
 
         <div class="form-group my-3">
-            <label for="nadpis"><h3>Nadpis</h3></label>
-            <input type="text" class="form-control" id="nadpis" name="nadpis"  placeholder="Nadpis" required>
+            <h3><label for="nadpisMeme">Nadpis</label></h3>
+            <input type="text" class="form-control" id="nadpisMeme" name="nadpis"  placeholder="Nadpis" required>
         </div>
         <div class="form-group">
-            <label for="popis"><h3>Popis</h3></label>
+            <h3><label for="popis">Popis</label></h3>
             <input type="text" class="form-control" id="popis" name="popis" placeholder="Popis" required>
         </div>
         <div class="form-group">
-            <label><h3>Vlozte URL adresu obrazka</h3></label>
+            <h3><label>Vlozte URL adresu obrazka</label></h3>
             <input type="url" class="form-control-file" id="url" name="url" placeholder="URL" required>
         </div>
         <div class="form-group">

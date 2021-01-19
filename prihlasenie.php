@@ -62,7 +62,7 @@ if(isset($_POST['odoslane'])) {
                 <p>Prosim vyplnte nasledovne udaje pre prihlasenie</p>
                 <hr>
 
-                <label for="email"><b>Login</b></label>
+                <label for="login"><b>Login</b></label>
                 <input type="text" placeholder="Enter Login" name="login" id="login" required>
 
                 <label for="psw"><b>Heslo</b></label>
