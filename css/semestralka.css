@@ -9,6 +9,9 @@
 .vtipy .zvyraznenie {
   color: #4BA41C;
 }
+
+
+
 .body {
     margin: 0;
     font: 15px/1.5 Arial, Helvetica, sans-serif;
@@ -16,6 +19,18 @@
     background-color: #f4f4f4;
     width: 100vw;
     height: 100vh;
+    overflow-x:hidden;
+}
+
+.sipka-hore {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1030;
+}
+
+.sipka-hore:hover {
+  cursor: pointer;
 }
 
 .kontajner {
@@ -147,6 +162,23 @@ header a:hover {
   width: 70%;
 }
 
+
+#kategorie {
+  margin-top: 20px;
+}
+
+#kategorie .kategoria {
+  float: left;
+  text-align: center;
+  width: 30%;
+  padding: 10px;
+  display: block;
+}
+
+#kategorie .kategoria img {
+  width: 90px;
+}
+
 #novinky {
   margin-top: 20px;
   padding: 15px;
@@ -169,22 +201,6 @@ header a:hover {
   padding: 4px;
   height: 25px;
   width: 200px;
-}
-
-#kategorie {
-  margin-top: 20px;
-}
-
-#kategorie .kategoria {
-  float: left;
-  text-align: center;
-  width: 30%;
-  padding: 10px;
-  display: block;
-}
-
-#kategorie .kategoria img {
-  width: 90px;
 }
 
 

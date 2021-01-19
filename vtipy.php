@@ -51,13 +51,18 @@ echo file_get_contents("adminHeader.php")
     <div class="vtipy">
     </div>
     <div class="text-center my-4 text-success">
-        <div class="load spinner-border ">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="load spinner-border mb-4">
         </div>
     </div>
 </div>
+<div class="sipka-hore my-4 mx-4">
+    <img src="obrazky/sipka.png" width="30px" height="40px" onclick="topFunction()">
+</div>
+<script>
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
 <script src="js/vtipy.js"></script>
 </body>
 </html>

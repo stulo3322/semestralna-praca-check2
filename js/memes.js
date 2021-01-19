@@ -9,7 +9,7 @@
         const memeSe = document.createElement('memeblock')
 
         memeSe.innerHTML = `
-        <img src="${memes[i].link}" width="500" style="margin-left: 30%; margin-top: 10px;">
+        <img src="${memes[i].link}" width="500">
     `;
         memesSe.appendChild(memeSe);
     };

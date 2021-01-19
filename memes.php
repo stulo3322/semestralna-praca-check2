@@ -47,9 +47,16 @@ echo file_get_contents("adminHeader.php")
             </div>
         </div>
 
-    <div class="meme">
+    <div class="d-flex justify-content-center mt-4">
+            <div class="meme">
 
+            </div>
     </div>
+    <div class="d-flex justify-content-center">
+        <a href="memes.php" type="submit" class="btn btn-success my-5" >Dalsie meme</a>
+    </div>
+
+
 
     <script src="js/memes.js"></script>
     <section id="novinky">

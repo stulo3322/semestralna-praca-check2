@@ -82,7 +82,7 @@ echo file_get_contents("header.php")
                     <button type="submit" name="odoslane" class="registerbtn">Zaregistrovat</button>
                     </div>
                 
-                    <div class="container signin">
+                    <div class="kontajner signin">
                     <p>Uz mate ucet? <a href="prihlasenie.php">Prihlaste sa</a>.</p>
                     </div>
                 </form>

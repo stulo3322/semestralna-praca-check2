@@ -1,5 +1,5 @@
 <?php
-
+include_once "memeUdaje.php";
 
 class databaza
 {
@@ -159,8 +159,24 @@ class databaza
         }
     }
 
-    public function vlozMeme($nadpis,$popis)
+    public function vlozMeme($login,$nadpis,$popis,$url)
     {
+        try {
+            $sql = 'INSERT INTO memesky(login,nadpis,popis,url) VALUES (?,?,?,?)';
+            $this->db->prepare($sql)->execute([$login,$nadpis,$popis,$url]);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
+    public function vyberUdajeOMeme()
+    {
+        $memes = [];
+        $memesDb = $this->db->query('SELECT * FROM memesky');
+
+        foreach ($memesDb as $meme) {
+            $memes[] = new memeUdaje($meme['login'],$meme['nadpis'],$meme['popis'],$meme['url']);
+        }
+        return $memes;
     }
 }

@@ -3,6 +3,11 @@ include_once "databaza.php";
 $db = new databaza();
 session_start();
 
+if(isset($_POST['odoslat'])) {
+    $db->vlozMeme($_SESSION['login'],$_POST['nadpis'],$_POST['popis'],$_POST['url']);
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,44 +45,38 @@ echo file_get_contents("adminHeader.php")
                 <li><a href="vtipy.php">Vtipy</a></li>
                 <li><a href="vaseMemes.php">Vase Memes</a></li>
 
-                <?php
-
-                if($_SESSION['loggedin'] == false) {
-
-                } else {
-                    echo "<li><a href='nahratMeme.php'>Nahrat meme</a></li>";
-                }
-                ?>
-
             </ul>
         </nav>
     </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-4 pl-4 pr-5 pt-4">
-<?php
-    $memes = $db->vyberUdajeOMeme();
-    /** @var memeUdaje  $meme*/
+<div class="container col-12 col-md-6 offset-md-3 px-4">
+    <div class="container my-4">
+        <h1 class="text-success">Videli ste nejake super meme?</h1>
+        <h2 class="text-success">Podelte sa on s ostatnymi!</h2>
+    </div>
+    <form method="post">
 
-    foreach ($memes as $meme) {
-        echo '
-            
-                <div class="col mb-4">
-                             <div class="card">
-                                <img src='.$meme->getUrl().' class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">'.$meme->getNadpis().'</h5>
-                                    <p class="card-text">'.$meme->getPopis().'</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Pridal pouzivatel: '.$meme->getLogin().'</small>
-                                </div>
-                            </div>
-                </div>
-        ';
-    }
-?>
+        <div class="form-group my-3">
+            <label for="nadpis"><h3>Nadpis</h3></label>
+            <input type="text" class="form-control" id="nadpis" name="nadpis"  placeholder="Nadpis" required>
+        </div>
+        <div class="form-group">
+            <label for="popis"><h3>Popis</h3></label>
+            <input type="text" class="form-control" id="popis" name="popis" placeholder="Popis" required>
+        </div>
+        <div class="form-group">
+            <label><h3>Vlozte URL adresu obrazka</h3></label>
+            <input type="url" class="form-control-file" id="url" name="url" placeholder="URL" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" name="odoslat" class="btn btn-success">Odoslat</button>
+        </div>
+    </form>
 </div>
+
+
+
 
 <section id="novinky">
     <div class="kontajner">
