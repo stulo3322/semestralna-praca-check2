@@ -7,7 +7,13 @@ if(isset($_POST['odoslane'])) {
     if ($tmp) {
         $_SESSION['loggedin'] = true;
         $_SESSION['login'] = $_POST['login'];
-        header("Location: index.php");
+        if("admin" == $_POST['login']) {
+            header("Location: admin.php");
+        } else {
+            header("Location: index.php");
+        }
+
+
     } else {
         echo '<script>alert("Nespravny login alebo heslo!")</script>';
     }
@@ -28,7 +34,7 @@ if(isset($_POST['odoslane'])) {
 </head>
 <body class="body">
 <header>
-    <div class="container">
+    <div class="kontajner">
         <div id="nadpis">
             <h1><span class="zvyraznenie">Meme</span> Hell</h1>
         </div>
@@ -45,13 +51,13 @@ if(isset($_POST['odoslane'])) {
 
 
 <section id="hlavne">
-    <div class="container">
+    <div class="kontajner">
         <article id="hlavne-stlpec">
             <h1 class = "nadpis-stranka">Ucet</h1>
 
         </article>
         <form method="post">
-            <div class="container">
+            <div class="kontajner">
                 <h1>Prihlasenie</h1>
                 <p>Prosim vyplnte nasledovne udaje pre prihlasenie</p>
                 <hr>
@@ -65,7 +71,7 @@ if(isset($_POST['odoslane'])) {
                 <button type="submit" name="odoslane" class="registerbtn">Prihlasit</button>
             </div>
 
-            <div class="container signin">
+            <div class="kontajner signin">
                 <p>Nemate ucet? <a href="ucet.php">Zaregistrujte sa</a>.</p>
             </div>
         </form>
@@ -77,16 +83,16 @@ if(isset($_POST['odoslane'])) {
     </div>
 </section>
 <section id="novinky">
-    <div class="container">
-        <h1>Prihlaste sa na odber noviniek</h1>
-        <form action="action.php">
-            <input type="email" placeholder="Zadajte email...">
+    <div class="kontajner">
+        <form action="novinkyPrihlasenie.php" method="post">
+            <label>Prihlaste sa na odber tych najlepsich memes kazdy tyzden</label>
+            <input type="email" name="email" placeholder="Zadajte email..." required>
             <button type="submit" class="tlacidlo">Prihlasit</button>
         </form>
     </div>
 </section>
 <footer>
-    <p>Martin Stulrajter, Copyright &copy; 2020</p>
+    <p>Martin Stulrajter, Copyright &copy; 2021</p>
 </footer>
 </body>
 </html>

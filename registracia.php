@@ -4,10 +4,6 @@ include_once 'databaza.php';
 class registracia
 {
     private $db;
-    private $email;
-    private $login;
-    private $heslo;
-    private $heslo2;
     public function __construct()
     {
         $this->db = new databaza();
@@ -15,8 +11,6 @@ class registracia
 
     private function kontrolaHesla($heslo,$heslo2):bool
     {
-        $this->heslo = $heslo;
-        $this->heslo2 = $heslo2;
         if($heslo == $heslo2) {
             return true;
         } else {

@@ -4,20 +4,12 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Stranka, ktora je akoze vtipna">
-        <meta name="keywords" content="meme,zabava,obrazky,vtip">
-        <meta name="author" content="Martin Stulrajter">
-
-
-        <title>MemeHell | O nas</title>
-        <link rel="stylesheet" href="css/semestralka.css">
-    </head>
+<?php
+echo file_get_contents("header.php")
+?>
     <body class="body">
         <header>
-            <div class="container">
+            <div class="kontajner">
                 <div id="nadpis">
                     <h1><span class="zvyraznenie">Meme</span> Hell</h1>
                 </div>
@@ -40,7 +32,7 @@ session_start();
             </div>
         </header>
         <section id="hlavne">
-            <div class="container">
+            <div class="kontajner">
                     <h1 class = "nadpis-stranka">O nas</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla efficitur vel nulla ultricies ultricies. Sed gravida tincidunt quam porta pellentesque. Sed malesuada maximus bibendum. Morbi et sagittis mi, vitae ullamcorper ex. Integer quis lorem posuere, vulputate turpis ut, malesuada metus. Fusce a enim accumsan odio efficitur pellentesque sit amet vel neque. Quisque imperdiet magna et condimentum facilisis. Praesent semper, eros ac aliquet eleifend, ipsum risus ornare risus, id laoreet augue neque eget felis. Mauris faucibus auctor fringilla. Donec eu mollis massa. Aenean convallis facilisis orci eget convallis. Morbi a pretium felis. Proin a nunc eleifend, convallis enim eu, gravida mi.</p> 
 
@@ -48,16 +40,16 @@ session_start();
             </div>
         </section>
         <section id="novinky">
-            <div class="container">
-                <h1>Prihlaste sa na odber noviniek</h1>
-               <form action="action.php">
-                    <input type="email" placeholder="Zadajte email..."> 
-                    <button type="submit" class="tlacidlo" disabled>Prihlasit</button>
-               </form>
+            <div class="kontajner">
+                <form action="novinkyPrihlasenie.php" method="post">
+                    <label>Prihlaste sa na odber tych najlepsich memes kazdy tyzden</label>
+                    <input type="email" name="email" placeholder="Zadajte email..." required>
+                    <button type="submit" class="tlacidlo">Prihlasit</button>
+                </form>
             </div>
         </section>
         <footer>
-            <p>Martin Stulrajter, Copyright &copy; 2020</p>
+            <p>Martin Stulrajter, Copyright &copy; 2021</p>
         </footer>
     </body>
 </html>

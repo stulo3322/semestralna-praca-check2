@@ -78,15 +78,15 @@ if(isset($_POST['odoslane'])) {
 <br>
 <section id="novinky">
     <div class="container">
-        <h1>Prihlaste sa na odber noviniek</h1>
-        <form action="action.php">
-            <input type="email" placeholder="Zadajte email...">
+        <form action="novinkyPrihlasenie.php" method="post">
+            <label>Prihlaste sa na odber tych najlepsich memes kazdy tyzden</label>
+            <input type="email" name="email" placeholder="Zadajte email..." required>
             <button type="submit" class="tlacidlo">Prihlasit</button>
         </form>
     </div>
 </section>
 <footer>
-    <p>Martin Stulrajter, Copyright &copy; 2020</p>
+    <p>Martin Stulrajter, Copyright &copy; 2021</p>
 </footer>
 </body>
 </html>

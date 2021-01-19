@@ -1,3 +1,14 @@
+* {
+  box-sizing: unset;
+}
+
+.vtipy {
+  font-weight: bold;
+}
+
+.vtipy .zvyraznenie {
+  color: #4BA41C;
+}
 .body {
     margin: 0;
     font: 15px/1.5 Arial, Helvetica, sans-serif;
@@ -7,7 +18,7 @@
     height: 100vh;
 }
 
-.container {
+.kontajner {
   width: 80%;
   margin: auto;
   overflow: hidden;
@@ -87,25 +98,35 @@ header a:hover {
   font-weight: bold;
 }
 
-.nav2 {
+.druhy-navbar {
   background: #263039;
   color: #ffffff;
-  padding-top: 20px;
   min-height: 30px;
   border-bottom: #4BA41C 3px solid;
 }
 
-.nav2 li {
+.druhy-navbar li {
   float: left;
   display: inline;
   padding: 0 20px 0 20px;
 }
 
-.nav2 a {
+.druhy-navbar a {
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 16px;
+}
+
+.druhy-navbar nav {
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.druhy-navbar a:hover {
+  color: #cccccc;
+  font-weight: bold;
 }
 
 #ukazka {
@@ -131,16 +152,17 @@ header a:hover {
   padding: 15px;
   color: white;
   background: #35424a;
-
 }
 
-#novinky h1 {
-  float: left;
+#novinky label {
+  margin-right: 20px;
+  font-size: 16px;
 }
 
 #novinky form {
   float: right;
   margin-top: 15px;
+  align-self: center;
 }
 
 #novinky input[type = "email"] {
@@ -172,7 +194,6 @@ footer {
   color: #ffffff;
   background-color: #4BA41C;
   text-align: center;
-
 }
 
 

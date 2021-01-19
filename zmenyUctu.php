@@ -22,7 +22,8 @@ if(isset($_POST['vymazanie'])) {
     if($tmp == 0) {
         $_SESSION['loggedin'] = false;
         $_SESSION['login'] = "";
-        echo '<script>alert("Heslo uspesne zmenene!")</script>';
+        echo '<script>alert("Ucet bol vymazany!")</script>';
+        sleep(1);
         header("Location: index.php");
     } elseif($tmp == 1) {
         echo '<script>alert("Zadali ste nespravne heslo!")</script>';
@@ -31,6 +32,10 @@ if(isset($_POST['vymazanie'])) {
     } elseif($tmp == 3) {
         echo '<script>alert("Databaza!")</script>';
     }
+}
+
+if(isset($_POST['novinky'])) {
+
 }
 ?>
 
@@ -49,7 +54,7 @@ if(isset($_POST['vymazanie'])) {
 </head>
 <body class="body">
 <header>
-    <div class="container">
+    <div class="kontajner">
         <div id="nadpis">
             <h1><span class="zvyraznenie">Meme</span> Hell</h1>
         </div>
@@ -73,13 +78,13 @@ if(isset($_POST['vymazanie'])) {
 
 
 <section class="hlavne">
-    <div class="container">
+    <div class="kontajner">
         <article id="hlavne-stlpec">
             <h1 class = "nadpis-stranka">Zmeny uctu pouzivatela: <?php echo $_SESSION['login']?></h1>
 
         </article>
         <form method="post">
-            <div class="container">
+            <div class="kontajner">
                 <h1>Zmena hesla</h1>
                 <br>
                 <div class="kategoria">
@@ -101,7 +106,7 @@ if(isset($_POST['vymazanie'])) {
         </form>
         <hr>
         <form  method="post">
-            <div class="container">
+            <div class="kontajner">
                 <h1>Vymazanie uctu</h1>
                 <br>
                 <div class="kategoria">
@@ -120,16 +125,16 @@ if(isset($_POST['vymazanie'])) {
 </section>
 
 <section id="novinky">
-    <div class="container">
-        <h1>Prihlaste sa na odber noviniek</h1>
-        <form action="action.php">
-            <input type="email" placeholder="Zadajte email...">
+    <div class="kontajner">
+        <form action="novinkyPrihlasenie.php" method="post">
+            <label>Prihlaste sa na odber tych najlepsich memes kazdy tyzden</label>
+            <input type="email" name="email" placeholder="Zadajte email..." required>
             <button type="submit" class="tlacidlo">Prihlasit</button>
         </form>
     </div>
 </section>
 <footer>
-    <p>Martin Stulrajter, Copyright &copy; 2020</p>
+    <p>Martin Stulrajter, Copyright &copy; 2021</p>
 </footer>
 </body>
 </html>

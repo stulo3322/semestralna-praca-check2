@@ -40,6 +40,16 @@ class databaza
         return true;
     }
 
+    public function nieRovnakyEmailNovinky($email) : bool {
+        $dbRiadky = $this->db->query('select email, login from novinky');
+        foreach ($dbRiadky as $riadok) {
+            if ($riadok['email'] == $email) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function nieRovnakyLogin($login) : bool {
         $dbRiadky = $this->db->query('select email, login from prudaje');
         foreach ($dbRiadky as $riadok) {
@@ -86,11 +96,12 @@ class databaza
     }
 
 
-    public function vymazanieUctu($login,$heslo,$hesloZnova) : int {
+    public function vymazanieUctu($login,$heslo,$hesloZnova) : int
+    {
         $hesloDb = $this->db->prepare('SELECT heslo FROM prudaje WHERE login=?');
         $hesloDb->execute([$login]);
-        if( $hesloV = $hesloDb->fetch()) {
-            if($hesloV['heslo'] == $heslo) {
+        if ($hesloV = $hesloDb->fetch()) {
+            if (password_verify($heslo, $hesloV['heslo'])) {
                 if ($heslo == $hesloZnova) {
                     try {
                         $sql = "DELETE FROM prudaje WHERE login=?";
@@ -108,5 +119,48 @@ class databaza
         } else {
             return 1;
         }
+    }
+
+    public function prihlasNovinky($email) : bool
+    {
+        if($this->nieRovnakyEmailNovinky($email)) {
+            try {
+                $sql = 'INSERT INTO novinky(email) VALUES (?)';
+                $this->db->prepare($sql)->execute([$email]);
+                return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+        return false;
+
+    }
+
+    public function vyberUdajeNoviniek()
+    {
+        $emaily = [];
+        $emailyDb = $this->db->query('SELECT * FROM novinky');
+
+        foreach ($emailyDb as $email) {
+            $emaily[] = $email['email'];
+        }
+        return $emaily;
+    }
+
+    public function odhlasNovinky($email) {
+        try {
+            $sql = "DELETE FROM novinky WHERE email=?";
+            $this->db->prepare($sql)->execute([$email]);
+            return true;
+        } catch (PDOException $e) {
+            echo 'Failed: ' . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function vlozMeme($nadpis,$popis)
+    {
+
     }
 }
